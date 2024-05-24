@@ -1,17 +1,23 @@
 // Return the name of the course
 const Header = (props) => {
     return (
-        <>
-            <h1>{props.course}</h1>
-        </>
+        <h1>{props.course}</h1>
     )
 }
-// Retun the parts of the course and the number of exercices
+// Return the part and number of exercises specified
+const Part = (props) => {
+    return (
+        <p>{props.part} {props.exercises}</p>    
+    )
+}
+// Return the Parts components
 const Content = (props) => {
     return (
         <>
-            <p>{props.part} {props.exercises}</p>
-        </>    
+        <Part part = {props.parts[0]} exercises = {props.exercises[0]} />
+        <Part part = {props.parts[1]} exercises = {props.exercises[1]} />
+        <Part part = {props.parts[2]} exercises = {props.exercises[2]} />
+        </>
     )
 }
 // Return the total number of exercises
@@ -21,9 +27,7 @@ const Total = (props) => {
         return prevExc + actualExc
     })
     return (
-        <>
-            <p>Number of excercises {total}</p>
-        </>
+        <p>Number of excercises {total}</p>
     )
 }
 
@@ -41,9 +45,7 @@ const App = () => {
 
         <div>
         <Header course = {course}/>
-        <Content part = {part1} exercises = {exercises1} />
-        <Content part = {part2} exercises = {exercises2} />
-        <Content part = {part3} exercises = {exercises3} />
+        <Content parts = {[part1, part2, part3]} exercises  = {[exercises1, exercises2, exercises3]} />
         <Total exercises = {[exercises1, exercises2, exercises3]} />
         </div>
   )
